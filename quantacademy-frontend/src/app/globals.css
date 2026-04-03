@@ -1,0 +1,118 @@
+@import "tailwindcss";
+
+@theme {
+  --color-emerald-300-oklch: 0.905 0.134 164.623;
+  --color-quant-primary: #10b981;
+  --color-quant-secondary: #065f46;
+  --color-quant-bg: #0b1120;
+  --color-quant-surface: #111827;
+  --color-quant-surface-hover: #1f2937;
+  --color-quant-border: #1e293b;
+  --color-quant-accent: #f59e0b;
+  --color-quant-text: #e2e8f0;
+  --color-quant-muted: #64748b;
+  --color-quant-danger: #ef4444;
+  --color-quant-success: #22c55e;
+  --color-quant-glow: rgba(16, 185, 129, 0.15);
+  --font-display: "Inter", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+}
+
+@keyframes glow {
+  0%, 100% { box-shadow: 0 0 5px rgba(16, 185, 129, 0.3), 0 0 20px rgba(16, 185, 129, 0.1); }
+  50% { box-shadow: 0 0 20px rgba(16, 185, 129, 0.5), 0 0 40px rgba(16, 185, 129, 0.2); }
+}
+
+@keyframes scanline {
+  0% { background-position: 0% 0%; }
+  100% { background-position: 0% 100%; }
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--color-quant-bg);
+  color: var(--color-quant-text);
+  font-family: var(--font-display);
+  position: relative;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(17, 24, 39, 0.0) 50%,
+    rgba(17, 24, 39, 0.1) 50%
+  );
+  background-size: 100% 4px;
+  pointer-events: none;
+  z-index: 1000;
+  opacity: 0.03;
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 0%, var(--color-quant-glow) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: -1;
+}
+
+.quant-card {
+  border: 1px solid var(--color-quant-border);
+  border-radius: 12px;
+  background: var(--color-quant-surface);
+  position: relative;
+  overflow: hidden;
+}
+
+.quant-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--color-quant-primary), transparent);
+  opacity: 0.8;
+}
+
+.quant-card:hover {
+  border-color: rgba(16, 185, 129, 0.4);
+  box-shadow: 0 0 20px var(--color-quant-glow);
+}
+
+.quant-border-top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--color-quant-primary), transparent);
+}
+
+.hud-border {
+  border: 1px solid var(--color-quant-border);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05), 0 0 1px rgba(16, 185, 129, 0.2);
+}
+
+.scanline-text {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--color-quant-muted);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+@keyframes pulse-border {
+  0%, 100% { border-color: var(--color-quant-border); }
+  50% { border-color: rgba(16, 185, 129, 0.5); }
+}
+
+.pulse-border {
+  animation: pulse-border 2s ease-in-out infinite;
+}
