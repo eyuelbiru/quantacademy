@@ -57,7 +57,7 @@ export function getCompletedStrategies(): string[] {
 export function getCompletionStats(): { completed: number; total: number; percentage: number } {
   const data = load();
   const completed = Object.values(data).filter((p) => p.completed).length;
-  return { completed, total: 44, percentage: Math.round((completed / 44) * 100) };
+  return { completed, total: 45, percentage: Math.round((completed / 45) * 100) };
 }
 
 export function resetAllProgress() {

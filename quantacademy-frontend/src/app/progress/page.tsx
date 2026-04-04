@@ -22,7 +22,7 @@ const difficultyColor: Record<string, string> = {
 
 export default function ProgressPage() {
   const [data, setData] = useState<QuizData[]>([]);
-  const [stats, setStats] = useState({ completed: 0, total: 44, percentage: 0 });
+  const [stats, setStats] = useState({ completed: 0, total: 45, percentage: 0 });
 
   useEffect(() => {
     const items: QuizData[] = ALL_STRATEGY_NAMES.map((s) => {

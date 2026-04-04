@@ -15,7 +15,7 @@ export default function HomePage() {
   const [familyFilter, setFamilyFilter] = useState<string>("all");
   const [statusFilter, setStatusFilter] = useState<StatusFilter>("all");
   const [completed, setCompleted] = useState<string[]>([]);
-  const [stats, setStats] = useState({ completed: 0, total: 44, percentage: 0 });
+  const [stats, setStats] = useState({ completed: 0, total: 45, percentage: 0 });
 
   useEffect(() => {
     fetchStrategies().then(setStrategies).catch(() => {
